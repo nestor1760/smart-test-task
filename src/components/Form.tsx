@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../hook"
 import { setInputValue } from "../store/formSlice";
+import { CiSearch } from "react-icons/ci";
 
 const Form = () => {
   const dispatch = useAppDispatch()
@@ -10,23 +11,25 @@ const Form = () => {
   };
 
   return (
-    <form>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={handleChange}
-        placeholder="Search..."
-        className="
-          w-[180px]
-          h-[40px]
-          m-2
-          p-1
-          border-solid
-          border-[1px]
-          border-black
-        "
-      />
-    </form>
+    <div className="relative">
+      <form>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={handleChange}
+          placeholder="Search..."
+          className="
+            w-[200px]
+            h-[40px]
+            mb-[20px]
+            pl-2
+            pr-[40px]
+            text-gray-400
+          "
+        />
+        <CiSearch className="absolute top-[10px] right-[10px]" size={20} color="gray" />
+      </form>
+    </div>
   )
 }
 

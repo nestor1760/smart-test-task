@@ -13,8 +13,8 @@ function App() {
 
 
   return (
-    <div className="w-full h-screen flex items-center justify-center">
-      <div className="w-[1000px] min-h-[800px] flex items-start justify-center flex-col">
+    <div className="w-full h-screen flex items-center justify-center bg-custom-gradient">
+      <div className="w-[1000px] flex items-start justify-center flex-col backdrop-blur-sm bg-white/30 p-3">
         <Form />
         <Table />
       </div>
