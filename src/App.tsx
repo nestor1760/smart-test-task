@@ -11,10 +11,9 @@ function App() {
     dispatch(fetchUsers())
   }, [])
 
-
   return (
     <div className="w-full h-screen flex items-center justify-center bg-custom-gradient">
-      <div className="w-[1000px] flex items-end justify-center flex-col backdrop-blur-sm bg-white/30 text-white p-3">
+      <div className="w-[1000px] flex items-end justify-center flex-col backdrop-blur-sm bg-white/20 p-3">
         <Form />
         <Table />
       </div>

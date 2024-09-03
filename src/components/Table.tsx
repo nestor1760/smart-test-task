@@ -13,11 +13,11 @@ const Table = () => {
 
   const columns = useMemo<Column<TUser>[]>(
     () => [
-      { Header: "ID", accessor: "id" },
+      // { Header: "Id", accessor: "id" },
       { Header: "Name", accessor: "name" },
       { Header: "Username", accessor: "username" },
-      { Header: "Phone", accessor: "phone" },
       { Header: "Email", accessor: "email" },
+      { Header: "Phone", accessor: "phone" },
     ],
     []
   );
@@ -26,12 +26,16 @@ const Table = () => {
 
   return (
     <div className="w-full h-full min-h-[500px]">
-      <table {...getTableProps()}>
+      <table {...getTableProps()} className="w-full table-auto border-separate border-spacing-0 border border-gray-300 text-white">
         <thead>
           {headerGroups.map((headerGroup, index) => (
-            <tr {...headerGroup.getHeaderGroupProps()} key={index}>
+            <tr {...headerGroup.getHeaderGroupProps()} key={index} className='h-[40px] bg-sky-600'>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()} key={column.id}>
+                <th
+                  {...column.getHeaderProps()}
+                  key={column.id}
+                  className='border border-gray-300 px-4 py-2 text-left'
+                >
                   {column.render("Header")}
                 </th>
               ))}
@@ -42,14 +46,18 @@ const Table = () => {
           {rows.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()} key={row.id}>
+              <tr {...row.getRowProps()} key={row.id} className='hover:bg-gray-100 hover:text-sky-600 cursor-pointer'>
                 {row.cells.map((cell) => (
-                  <td {...cell.getCellProps()} key={cell.column.id}>
+                  <td
+                    {...cell.getCellProps()}
+                    key={cell.column.id}
+                    className='border-t border-b border-gray-300 px-4 py-2'
+                  >
                     {cell.render("Cell")}
                   </td>
                 ))}
               </tr>
-            );
+            )
           })}
         </tbody>
       </table>
