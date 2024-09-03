@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch } from "./hook";
 import { fetchUsers } from "./store/usersSlice";
-import Form from "./components/Form";
 import Table from "./components/Table";
 
 function App() {
@@ -13,10 +12,7 @@ function App() {
 
   return (
     <div className="w-full h-screen flex items-center justify-center bg-custom-gradient">
-      <div className="w-[1000px] flex items-end justify-center flex-col backdrop-blur-sm bg-white/20 p-3">
-        <Form />
-        <Table />
-      </div>
+      <Table />
     </div>
   );
 }

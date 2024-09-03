@@ -3,6 +3,7 @@ import { useAppSelector } from '../hook';
 import { Column, useTable } from "react-table";
 import { useMemo } from 'react';
 import { TUser } from '../types/types';
+import Form from './Form';
 
 const Table = () => {
   const { inputValue } = useAppSelector(state => state.form)
@@ -13,7 +14,6 @@ const Table = () => {
 
   const columns = useMemo<Column<TUser>[]>(
     () => [
-      // { Header: "Id", accessor: "id" },
       { Header: "Name", accessor: "name" },
       { Header: "Username", accessor: "username" },
       { Header: "Email", accessor: "email" },
@@ -25,7 +25,8 @@ const Table = () => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data })
 
   return (
-    <div className="w-full h-full min-h-[500px]">
+    <div className="min-h-[500px] w-[1000px] flex items-end justify-center flex-col backdrop-blur-sm bg-white/20 p-3">
+      <Form />
       <table {...getTableProps()} className="w-full table-auto border-separate border-spacing-0 border border-gray-300 text-white">
         <thead>
           {headerGroups.map((headerGroup, index) => (
