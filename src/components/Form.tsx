@@ -24,7 +24,10 @@ const Form = () => {
             mb-[20px]
             pl-2
             pr-[40px]
+            border
+            border-gray-300
             text-gray-400
+            focus:border-gray-400
           "
         />
         <CiSearch className="absolute top-[10px] right-[10px]" size={20} color="gray" />
