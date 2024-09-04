@@ -3,10 +3,12 @@ import { useAppSelector } from '../hook';
 import { Column, useTable } from "react-table";
 import { useMemo } from 'react';
 import { TUser } from '../types/types';
+import Loader from './Loader';
+import NotFound from './NotFound';
 
 const Table = () => {
   const { inputValue } = useAppSelector(state => state.form)
-  const { users } = useAppSelector(state => state.users)
+  const { users, isLoading } = useAppSelector(state => state.users)
 
   const filteredList = useFilter({ inputValue: inputValue, array: users });
   const data = filteredList
@@ -28,6 +30,12 @@ const Table = () => {
     rows,
     prepareRow
   } = useTable({ columns, data })
+
+  if (isLoading) {
+    return (
+      <Loader />
+    )
+  }
 
   return (
     <div className='min-w-[80vw] h-[60vh] max-h-[60vh] overflow-y-auto'>
@@ -54,28 +62,39 @@ const Table = () => {
             </tr>
           ))}
         </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr
-                {...row.getRowProps()}
-                key={row.id}
-                className='hover:bg-gray-100 hover:text-[#3c589a] cursor-pointer'
-              >
-                {row.cells.map((cell) => (
-                  <td
-                    {...cell.getCellProps()}
-                    key={cell.column.id}
-                    className='border border-gray-300 px-4 py-2'
+        {
+          (filteredList.length <= 0)
+            ?
+            <td
+              colSpan={columns.length}
+              className="w-full text-center"
+            >
+              <NotFound />
+            </td>
+            :
+            <tbody {...getTableBodyProps()}>
+              {rows.map((row) => {
+                prepareRow(row);
+                return (
+                  <tr
+                    {...row.getRowProps()}
+                    key={row.id}
+                    className='hover:bg-gray-100 hover:text-[#3c589a] cursor-pointer'
                   >
-                    {cell.render("Cell")}
-                  </td>
-                ))}
-              </tr>
-            )
-          })}
-        </tbody>
+                    {row.cells.map((cell) => (
+                      <td
+                        {...cell.getCellProps()}
+                        key={cell.column.id}
+                        className='border border-gray-300 px-4 py-2'
+                      >
+                        {cell.render("Cell")}
+                      </td>
+                    ))}
+                  </tr>
+                )
+              })}
+            </tbody>
+        }
       </table>
     </div>
   );
