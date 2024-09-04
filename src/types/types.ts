@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 //for usersSlice.ts
 type Geo = {
   lat: string;
@@ -44,4 +46,9 @@ export type TFilterProps = {
 //for formSlice.ts
 export type TForm = {
   inputValue: string
+}
+
+//for Layout.tsx
+export type TLayout = {
+  children: ReactNode
 }

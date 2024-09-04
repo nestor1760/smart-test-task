@@ -3,7 +3,6 @@ import { useAppSelector } from '../hook';
 import { Column, useTable } from "react-table";
 import { useMemo } from 'react';
 import { TUser } from '../types/types';
-import Form from './Form';
 
 const Table = () => {
   const { inputValue } = useAppSelector(state => state.form)
@@ -22,15 +21,27 @@ const Table = () => {
     []
   );
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({ columns, data })
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow
+  } = useTable({ columns, data })
 
   return (
-    <div className="min-h-[500px] w-[1000px] flex items-end justify-center flex-col backdrop-blur-sm bg-white/20 p-3">
-      <Form />
-      <table {...getTableProps()} className="w-full table-auto border-separate border-spacing-0 border border-gray-300 text-white">
+    <div className='min-w-[80vw] h-[60vh] max-h-[60vh] overflow-y-auto'>
+      <table
+        {...getTableProps()}
+        className="w-full table-auto border-separate border-spacing-0 border border-gray-300 text-white"
+      >
         <thead>
           {headerGroups.map((headerGroup, index) => (
-            <tr {...headerGroup.getHeaderGroupProps()} key={index} className='h-[40px] bg-sky-600'>
+            <tr
+              {...headerGroup.getHeaderGroupProps()}
+              key={index}
+              className='h-[40px] bg-sky-600 sticky top-0'
+            >
               {headerGroup.headers.map((column) => (
                 <th
                   {...column.getHeaderProps()}
@@ -47,7 +58,11 @@ const Table = () => {
           {rows.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()} key={row.id} className='hover:bg-gray-100 hover:text-sky-600 cursor-pointer'>
+              <tr
+                {...row.getRowProps()}
+                key={row.id}
+                className='hover:bg-gray-100 hover:text-sky-600 cursor-pointer'
+              >
                 {row.cells.map((cell) => (
                   <td
                     {...cell.getCellProps()}
