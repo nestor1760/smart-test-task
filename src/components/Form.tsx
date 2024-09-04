@@ -24,6 +24,7 @@ const Form = () => {
             pl-2
             pr-[40px]
             mb-[10px]
+            text-[#3c589a]
             placeholder-[#3c589a]
             bg-light-gray
             border
