@@ -40,7 +40,7 @@ const Table = () => {
             <tr
               {...headerGroup.getHeaderGroupProps()}
               key={index}
-              className='h-[40px] bg-sky-600 sticky top-0'
+              className='h-[40px] bg-custom-blue sticky top-0'
             >
               {headerGroup.headers.map((column) => (
                 <th
@@ -61,13 +61,13 @@ const Table = () => {
               <tr
                 {...row.getRowProps()}
                 key={row.id}
-                className='hover:bg-gray-100 hover:text-sky-600 cursor-pointer'
+                className='hover:bg-gray-100 hover:text-[#3c589a] cursor-pointer'
               >
                 {row.cells.map((cell) => (
                   <td
                     {...cell.getCellProps()}
                     key={cell.column.id}
-                    className='border-t border-b border-gray-300 px-4 py-2'
+                    className='border border-gray-300 px-4 py-2'
                   >
                     {cell.render("Cell")}
                   </td>

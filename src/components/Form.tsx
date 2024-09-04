@@ -19,18 +19,19 @@ const Form = () => {
           onChange={handleChange}
           placeholder="Search..."
           className="
-            w-[200px]
+            w-[250px]
             h-[40px]
-            mb-[20px]
             pl-2
             pr-[40px]
+            mb-[10px]
+            placeholder-[#3c589a]
+            bg-light-gray
             border
             border-gray-300
-            text-gray-400
             focus:border-gray-400
           "
         />
-        <CiSearch className="absolute top-[10px] right-[10px]" size={20} color="gray" />
+        <CiSearch className="absolute top-[10px] right-[10px]" size={20} color="#3c589a" />
       </form>
     </div>
   )
